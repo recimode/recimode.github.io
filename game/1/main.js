@@ -5,7 +5,7 @@ const SCREEN_WIDTH = 1280;
 const SCREEN_HEIGHT = 720;
 const MAP_WIDTH = 2400;
 const MAP_HEIGHT = 2400;
-const MAIL_MAX = 15;
+const MAIL_MAX = 16;
 const PLAYER_SPEED = 5;
 
 import {ASSETS} from './assets.js';
