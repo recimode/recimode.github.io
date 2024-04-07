@@ -299,7 +299,7 @@ phina.define('MainScene', {
             this.exit({
               deliveredMail: MAIL_MAX,
               healthRemain: player.health,
-              elapsedTime: this.time,
+              elapseTime: this.time,
             });
           }
           this.notOpening = true;
@@ -371,7 +371,7 @@ phina.define('MainScene', {
             this.exit({
               deliveredMail: MAIL_MAX - this.currentMail,
               healthRemain: 0,
-              elapsedTime: -1,
+              elapseTime: -1,
             });
           }
           player.alpha = 0.6;
@@ -451,7 +451,7 @@ phina.define('MainScene', {
       this.exit({
         deliveredMail: MAIL_MAX,
         healthRemain: 1,
-        elapsedTime: 400000,
+        elapseTime: 400000,
       });
     }
   }
@@ -476,7 +476,7 @@ phina.define('Player', {
     this.isInvincible = false;
     this.invincibleTime = 4000;
     this.speed = PLAYER_SPEED;
-    this.rate = 1.5;
+    this.rate = 1.2;
     this.direction = 0;
   },
 });
@@ -536,10 +536,10 @@ phina.define('ResultScene', {
     this.score += param.deliveredMail * 2000;
     if(param.deliveredMail === MAIL_MAX) this.score += 10000;
     this.score += param.healthRemain * 3500;
-    let m = Math.floor(param.elapsedTime / 60000);
-    let s = Math.floor((param.elapsedTime - m * 60000) / 1000);
-    let ms = param.elapsedTime - m * 60000 - s * 1000;
-    let timeBonus = (600000 - param.elapsedTime) > 0 ? Math.floor((600000 - param.elapsedTime) / 20) : 0;
+    let m = Math.floor(param.elapseTime / 3600);
+    let s = Math.floor((param.elapseTime - m * 3600) / 60);
+    let ms = param.elapseTime - m * 3600 - s * 60;
+    let timeBonus = (600000 - param.elapseTime) > 0 ? Math.floor((600000 - param.elapseTime) / 20) : 0;
     this.score += timeBonus;
 
     let header = Label({
@@ -614,7 +614,7 @@ phina.define('ResultScene', {
           y: 200,
           fontSize: 60,
           fontFamily: 'ScoreDozer',
-          fill: '#667e2f',
+          fill: '#a1c54c',
           align: 'right',
         }).addChildTo(this);
         Label({
